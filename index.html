@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Footwear Collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-bg: #1a1a1a;
+            --luxury-accent: #2d2d2d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #fff;
+            margin: 50px 0;
+            font-size: 3em;
+            font-weight: 600;
+            letter-spacing: 2px;
+            position: relative;
+            text-transform: uppercase;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            width: 100%;
+            padding: 30px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #252525, #1e1e1e);
+            border-radius: 20px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.215, 0.610, 0.355, 1), box-shadow 0.4s ease;
+            position: relative;
+            animation: cardEntrance 0.6s ease-out forwards;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.1),
+                    transparent);
+            transition: 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+        }
+
+        .card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            transition: transform 0.4s ease, filter 0.4s ease;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .card:hover img {
+            transform: scale(1.08);
+            filter: saturate(120%) brightness(110%);
+        }
+
+        .card-content {
+            padding: 25px;
+            position: relative;
+            background: linear-gradient(to bottom, #2a2a2a, #1f1f1f);
+        }
+
+        .card h2 {
+            color: #fff;
+            margin: 0 0 15px;
+            font-size: 1.4em;
+            font-weight: 500;
+            letter-spacing: 1px;
+            min-height: 60px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.4s ease;
+        }
+
+        .card:hover h2::after {
+            width: 100px;
+        }
+
+        .stars {
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .stars i {
+            font-size: 1.1em;
+            margin-right: 3px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .stars:hover i {
+            transform: scale(1.1);
+        }
+
+        .price {
+            color: var(--gold);
+            font-size: 1.4em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .price del {
+            color: #666;
+            font-size: 0.9em;
+            margin-right: 15px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .card:hover .price {
+            color: #fff;
+        }
+
+        .card:hover .price del {
+            color: #999;
+        }
+
+        @keyframes cardEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(50px) rotateX(-30deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
+        }
+
+        /* Animation delays */
+        .card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .card:nth-child(4) {
+            animation-delay: 0.5s;
+        }
+
+        .card:nth-child(5) {
+            animation-delay: 0.6s;
+        }
+
+        .card:nth-child(6) {
+            animation-delay: 0.7s;
+        }
+
+        .card:nth-child(7) {
+            animation-delay: 0.8s;
+        }
+
+        .card:nth-child(8) {
+            animation-delay: 0.9s;
+        }
+
+        @media (max-width: 1200px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.2em;
+                text-align: center;
+            }
+
+            .card img {
+                height: 280px;
+            }
+        }
+
+        /* Luxury Decorative Elements */
+        .card::after {
+            content: 'Premium';
+            position: absolute;
+            top: 20px;
+            right: -40px;
+            background: var(--gold);
+            color: #000;
+            padding: 8px 40px;
+            transform: rotate(45deg);
+            font-size: 0.9em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-content::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+        .intro-text{
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+       
+
+    </style>
+</head>
+
+<body>
+    <h1>Exclusive Luxury Footwear</h1>
+    <p class="intro-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dolor beatae nemo doloremque. Vitae est pariatur accusamus enim esse sequi, similique quos vel aut quis suscipit ducimus hic explicabo quia.</p>
+    <div class="card-container">
+       
+        <div class="card">
+            <img src="IMG/HAPPY TEE.png" alt="Luxury Sneaker">
+            <div class="card-content">
+                <h2>Diamond Edition Runners</h2>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="price"><del>$1,200</del> $899</p>
+            </div>
+        </div>
+        <!-- Repeat for other cards with luxury names -->
+        <div class="card">
+            <img src="IMG/image_5tj.webp" alt="Luxury Shoe 1">
+            <div class="card-content">
+                <h2>Gold-Plated Loafers</h2>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="price"><del>$1,500</del> $1,099</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="IMG/image_BMd.webp" alt="Luxury Shoe 2">
+            <div class="card-content">
+                <h2>Platinum High Heels</h2>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="price"><del>$2,000</del> $1,499</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="IMG/image_bUG.webp" alt="Luxury Shoe 3">
+            <div class="card-content">
+                <h2>Crystal Stilettos</h2>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="price"><del>$2,500</del> $1,799</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="IMG/image_Knw.webp" alt="Luxury Shoe 4">
+            <div class="card-content">
+                <h2>Emerald Sandals</h2>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="price"><del>$1,800</del> $1,299</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="IMG/image_S-2.webp" alt="Luxury Shoe 5">
+            <div class="card-content">
+                <h2>Ruby Slippers</h2>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="price"><del>$3,000</del> $2,199</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="IMG/image_YRq.webp" alt="Luxury Shoe 6">
+            <div class="card-content">
+                <h2>Sapphire Boots</h2>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="price"><del>$2,200</del> $1,599</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="IMG/image_ZEF.webp" alt="Luxury Shoe 7">
+            <div class="card-content">
+                <h2>Onyx Sneakers</h2>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="price"><del>$1,700</del> $1,299</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
